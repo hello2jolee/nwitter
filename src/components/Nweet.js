@@ -17,7 +17,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     await dbService.doc(`nweets/${nweetObj.id}`).update({
       text: newNweet,
     });
-    setEditing(false)
+    setEditing(false);
   };
   const onChange = (event) => {
     const {
@@ -44,6 +44,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
+          {nweetObj.attachmentURL && (
+            <img src={nweetObj.attachmentURL} width="50" height="50" />
+          )}
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete Nweet</button>
