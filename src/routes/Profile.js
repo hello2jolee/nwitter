@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { authService, dbService } from "fBase";
 import { useHistory } from "react-router-dom";
 
-const Profile = ({ userObj }) => {
+const Profile = ({ userObj, refreshUser }) => {
   const history = useHistory();
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 
@@ -20,9 +20,10 @@ const Profile = ({ userObj }) => {
     event.preventDefault();
 
     if (userObj.displayName !== newDisplayName) {
-      const response = await userObj.updateProfile({
+      await userObj.updateProfile({
         displayName: newDisplayName,
       });
+      refreshUser();
     }
   };
   const getMyNweets = async () => {
