@@ -7,7 +7,7 @@ import Nweet from "components/Nweet";
 const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState("");
   useEffect(() => {
     dbService.collection("nweets").onSnapshot((snapshot) => {
       const nweetArray = snapshot.docs.map((doc) => ({
@@ -74,7 +74,7 @@ const Home = ({ userObj }) => {
         <button type="submit">Nweet</button>
         {attachment && (
           <div>
-            <img src={attachment} width="50" height="50" />
+            <img src={attachment} width="50" height="50" alt="" />
             <button onClick={onClearAttachment}>Clear</button>
           </div>
         )}
