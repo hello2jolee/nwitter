@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { storageService, dbService } from "fBase";
 
+import PropTypes from "prop-types";
+
 const NweetFactory = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [attachment, setAttachment] = useState("");
+
+  NweetFactory.propTypes = {
+    nweet: PropTypes.string,
+    attachment: PropTypes.string,
+  };
 
   const onSubmit = async (event) => {
     event.preventDefault();

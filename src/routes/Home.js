@@ -4,8 +4,14 @@ import { dbService } from "fBase";
 import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
 
+import PropTypes from "prop-types"
+
 const Home = ({ userObj }) => {
   const [nweets, setNweets] = useState([]);
+
+  Home.propTypes = {
+    nweets: PropTypes.array
+  }
 
   useEffect(() => {
     dbService.collection("nweets").onSnapshot((snapshot) => {

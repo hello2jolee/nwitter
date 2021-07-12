@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { authService } from "fBase";
 import { useHistory } from "react-router-dom";
 
+import PropTypes from "prop-types";
+
 const Profile = ({ userObj, refreshUser }) => {
   const history = useHistory();
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
+
+  Profile.propTypes = {
+    newDisplayName: PropTypes.string,
+  };
 
   const onLogOutClick = () => {
     authService.signOut();

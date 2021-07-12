@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fBase";
 
+import PropTypes from "prop-types";
+
 const Nweet = ({ nweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newNweet, setNewNweet] = useState(nweetObj.text);
+
+  Nweet.propTypes = {
+    editing: PropTypes.bool,
+    newNweet: PropTypes.string,
+  };
 
   const onDeleteClick = async () => {
     const ok = window.confirm("Are you sure you want to delete this nweet?");
@@ -27,7 +34,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     } = event;
     setNewNweet(value);
   };
-  
+
   return (
     <div>
       {editing ? (

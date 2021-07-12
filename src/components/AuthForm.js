@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { authService } from "fBase";
 
+import PropTypes from "prop-types";
+
 const AuthForm = () => {
   const [newAccount, setNewAccount] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  AuthForm.propTypes = {
+    newAccount: PropTypes.bool,
+    email: PropTypes.string,
+    password: PropTypes.string,
+    error: PropTypes.string,
+  };
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
   const onChange = (event) => {

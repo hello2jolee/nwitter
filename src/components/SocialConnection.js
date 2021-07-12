@@ -13,8 +13,7 @@ const SocialConnection = () => {
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
 
-    const data = await authService.signInWithPopup(provider);
-    console.log(data);
+    await authService.signInWithPopup(provider);
   };
   return (
     <div>
